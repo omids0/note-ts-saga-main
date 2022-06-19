@@ -8,9 +8,7 @@ const saga = createSagaMiddleware();
 
 const composeEnhancer = composeWithDevTools({});
 
-const initialState = {}
-
-const store = createStore(rootReducer, initialState, composeEnhancer(applyMiddleware(saga)));
+const store = createStore(rootReducer, composeEnhancer(applyMiddleware(saga)));
 
 saga.run(rootSaga);
 

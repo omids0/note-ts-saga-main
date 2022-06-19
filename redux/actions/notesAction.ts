@@ -1,7 +1,7 @@
 import { INoteDataReqActionType, INoteDataResActionType } from "../../types";
 import ActionTypeEnum from "../types";
 
-export const loadNotesAction = (type?: string, payload?: any) => {
+export const loadNotesAction = (payload: INoteDataResActionType) => {
   return { type: ActionTypeEnum.LOAD_NOTES, payload };
 };
 
@@ -16,7 +16,7 @@ export const notesAddAction = (payload: INoteDataReqActionType) => ({
 });
 
 export const notesAddedAction = (payload: INoteDataReqActionType) => ({
-  type: ActionTypeEnum.NOTES_LOADED,
+  type: ActionTypeEnum.NOTE_ADDED,
   payload,
 });
 

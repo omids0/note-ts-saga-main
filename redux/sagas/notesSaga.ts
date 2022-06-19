@@ -8,11 +8,23 @@ function* loadNotes() {
   yield put(actions.notesLoadedAction(noteData));
 }
 
+// payload: ReturnType<typeof actions.notesAddedAction>
+
+function* addNote(action: ReturnType<typeof actions.notesAddedAction>) {
+  console.log('add note', action.payload);
+  
+  yield put(actions.notesAddedAction(action.payload));
+}
+
 //Watcher
 function* watchLoadNotes() {
   yield takeEvery(ActionTypeEnum.LOAD_NOTES, loadNotes);
 }
 
+function* watchAddNotes() {
+  yield takeEvery(ActionTypeEnum.ADD_NOTE, addNote);
+}
+
 export function* notesSaga() {
-  yield all([watchLoadNotes()]);
+  yield all([watchLoadNotes(), watchAddNotes()]);
 }
