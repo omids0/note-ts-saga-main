@@ -1,7 +1,7 @@
 import TAction from "../actions/notesAction";
 import ActionTypeEnum from "../types";
 
-const iState: {}[] = [];
+const iState: [] = [];
 
 const notesReducer = (state = iState, action: TAction) => {
   switch (action.type) {
@@ -13,5 +13,6 @@ const notesReducer = (state = iState, action: TAction) => {
       return state;
   }
 };
+
 
 export { notesReducer as reducer };

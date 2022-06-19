@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadNotesAction } from './../redux/actions/notesAction';
 
 export default function MainPage() {
+  const dispatch = useDispatch()
+  const getNotesState = useSelector((state: any) => state.notesReducer)
+  console.log("🚀 ~ file: MainPage.tsx ~ line 8 ~ MainPage ~ getNotesState", getNotesState)
+
+  
+  useEffect(() => {
+    dispatch(loadNotesAction())
+  }, [])
+  
   return (
     <div>
       <header className="header-container">

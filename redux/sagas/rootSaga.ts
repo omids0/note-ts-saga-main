@@ -1,7 +1,8 @@
-import {all} from 'redux-saga/effects'
+import { all } from "redux-saga/effects";
+import { notesSaga } from "./notesSaga";
 
 function* rootSaga() {
-    console.log('test root saga')
+  yield all([notesSaga()]);
 }
 
-export default rootSaga
+export default rootSaga;

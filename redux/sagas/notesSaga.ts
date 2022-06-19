@@ -2,7 +2,6 @@ import { all, put, takeEvery } from "redux-saga/effects";
 import ActionTypeEnum from "../types";
 import * as actions from "../actions/notesAction";
 import { noteData } from "../../data/manualNotesData";
-import { INoteDataResActionType } from "../../types";
 
 //Worker
 function* loadNotes() {
