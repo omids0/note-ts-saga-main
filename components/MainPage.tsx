@@ -1,6 +1,7 @@
 import React, { useEffect, useId, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { noteData } from "../data/manualNotesData";
+import { RootState } from "../types/redux";
 import {
   loadNotesAction,
   notesAddAction,
@@ -13,7 +14,7 @@ import NotesList from "./NotesList";
 export default function MainPage() {
   const dispatch = useDispatch();
 
-  const getNotesState = useSelector((state: any) => state.notesReducer);
+  const getNotesState = useSelector((state: RootState) => state.notesReducer);
 
   useEffect(() => {
     dispatch(loadNotesAction({ data: noteData }));
