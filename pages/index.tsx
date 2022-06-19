@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import MainPage from '../components/MainPage'
+import PracticeTS from '../components/PracticeTS'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -12,6 +13,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainPage />
+      {/* <PracticeTS /> */}
     </div>
   )
 }

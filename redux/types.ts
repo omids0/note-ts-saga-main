@@ -1,0 +1,13 @@
+const ActionTypeEnum = {
+  NOTE_ADDED_ME: "NOTE_ADDED_ME",
+  ADD_NOTE: "ADD_NOTE",
+  NOTE_ADDED: "NOTE_ADDED",
+
+  LOAD_NOTES: "LOAD_NOTES",
+  NOTES_LOADED: "NOTES_LOADED",
+
+  REMOVE_NOTE: "REMOVE_NOTE",
+  NOTE_REMOVED: "NOTE_REMOVED",
+};
+
+export default ActionTypeEnum;
