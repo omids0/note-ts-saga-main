@@ -41,7 +41,7 @@ body {
 .header-input-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   height: 80vh;
   min-width: 30rem;
 }
@@ -63,5 +63,11 @@ body {
   color: #ffffff;
   font-weight: bold;
   border: none;
-  border-radius: 7px
+  border-radius: 7px;
+  margin: 0 1rem
+}
+
+.add-new-button:hover{
+  cursor: pointer;
+  box-shadow: 3px 3px 10px #999999;
 }
