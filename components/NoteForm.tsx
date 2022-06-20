@@ -5,11 +5,20 @@ import { INoteDataReqActionType } from "../types/DTO/note";
 
 export default function NoteForm() {
   const dispatch = useDispatch();
+  const uid = Math.random().toString(32).slice(2);
+
   const [state, setState] = React.useState<INoteDataReqActionType["req"]>({
-    id: Math.random().toString(32).slice(2),
+    id: uid,
     title: "",
     description: "",
   });
+
+  React.useEffect(()=> {
+    setState((prev) => ({
+      ...prev,
+      id: String(new Date().getUTCMilliseconds() + Math.random()),
+    }));
+  },[])
 
   const handleSubmit = () => {
     dispatch(createNoteItemActionRequest(state));
@@ -23,6 +32,7 @@ export default function NoteForm() {
   ) => {
     setState((prev) => ({
       ...prev,
+      id: String(new Date().getUTCMilliseconds() + Math.random()),
       [fieldName]: event.target.value,
     }));
   };

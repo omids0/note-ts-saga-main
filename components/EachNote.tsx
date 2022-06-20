@@ -23,10 +23,11 @@ interface INoteItemProps {
   id: INoteDataResActionType["data"][0]["id"];
   description: INoteDataResActionType["data"][0]["description"];
   title: INoteDataResActionType["data"][0]["title"];
+  key: INoteDataResActionType["data"][0]["id"];
 }
 
 const EachNote: FC<INoteItemProps> = (props) => {
-  const { id, description, title } = props;
+  const { id, description, title , ...rest } = props;
     const dispatch = useDispatch()
 
     const handleRemoveItem = () => {
@@ -34,7 +35,7 @@ const EachNote: FC<INoteItemProps> = (props) => {
   }
 
   return (
-    <div className="each-note-container" key={id}>
+    <div className="each-note-container" key={rest.key}>
       <div className="each-note-header">
         <button onClick={handleRemoveItem}>X</button>
         <h3>{title}</h3>

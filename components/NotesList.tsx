@@ -15,7 +15,7 @@ export default function NotesList() {
       {notesList && notesList.length === 0 && <h1>Notes list is empty...</h1>}
       {notesList &&
         notesList.length > 0 &&
-        notesList.map((note) => <EachNote {...note} />)}
+        notesList.map((note) => <EachNote key={note.id} {...note} />)}
     </div>
   );
 }
