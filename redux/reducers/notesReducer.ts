@@ -15,13 +15,10 @@ const notesReducer: Reducer<InitialState, TAction> = (
 ) => {
   switch (action.type) {
     case ActionTypeEnum.NOTES_LOADED:
-      console.log("redux=>", action.payload);
-
       return {
         ...state,
         ...action.payload,
       };
-    // return action.payload;
     case ActionTypeEnum.NOTE_ADDED:
     // return [...state, action.payload];
     default:

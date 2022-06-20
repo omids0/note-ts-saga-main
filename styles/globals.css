@@ -71,3 +71,30 @@ body {
   cursor: pointer;
   box-shadow: 3px 3px 10px #999999;
 }
+
+.each-note-container{
+  min-width: 40rem;
+  margin: 2rem 1rem;
+  box-shadow: 1px 1px 4px #999999;
+  border-radius: 4px
+}
+.each-note-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f1f1f1;
+  margin-bottom: 1rem;
+}
+
+.each-note-header>button{
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: #999999
+}
+
+.each-note-description{
+  padding: 1rem
+}

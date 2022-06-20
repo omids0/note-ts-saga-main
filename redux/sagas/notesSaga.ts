@@ -8,11 +8,7 @@ function* loadNotes() {
   yield put(actions.notesLoadedAction({ data: noteData }));
 }
 
-// payload: ReturnType<typeof actions.notesAddedAction>
-
 function* addNote(action: ReturnType<typeof actions.notesAddedAction>) {
-  console.log("add note", action.payload);
-
   yield put(actions.notesAddedAction(action.payload));
 }
 
