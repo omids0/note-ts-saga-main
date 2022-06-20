@@ -1,4 +1,4 @@
-import { INoteDataResActionType } from "../types";
+import { INoteDataResActionType } from "../types/DTO/note";
 
 export const noteData: INoteDataResActionType["data"] = [
   { id: 'asdsad', title: "test 1", description: "test description 1" },

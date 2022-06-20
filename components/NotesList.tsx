@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { getDataList } from "../redux/reducers/notesReducer";
+import { getDataList } from "../redux/reducers/notes";
 import EachNote from "./EachNote";
 
 export default function NotesList() {

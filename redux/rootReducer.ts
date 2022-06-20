@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { reducer } from "./notesReducer";
+import { noteStates } from "./reducers/notes";
 
 export default combineReducers({
-  notesReducer: reducer,
+  noteList: noteStates,
 });

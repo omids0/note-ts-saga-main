@@ -1,39 +1,50 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { notesAddAction } from "../redux/actions/notesAction";
+import { createNoteItemActionRequest } from "../redux/actions/notes";
+import { INoteDataReqActionType } from "../types/DTO/note";
 
 export default function NoteForm() {
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
-    const id = Math.random().toString(32).slice(2)
+  const dispatch = useDispatch();
+  const [state, setState] = React.useState<INoteDataReqActionType["req"]>({
+    id: Math.random().toString(32).slice(2),
+    title: "",
+    description: "",
+  });
 
-    const dispatch = useDispatch();
+  const handleSubmit = () => {
+    dispatch(createNoteItemActionRequest(state));
+  };
 
-    const saveNote = () => {
-        dispatch(
-          notesAddAction({
-            id,
-            title,
-            description,
-          })
-        );
-      }
+  const handleTyping = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>,
+    fieldName: string
+  ) => {
+    setState((prev) => ({
+      ...prev,
+      [fieldName]: event.target.value,
+    }));
+  };
+
   return (
     <div className="header-input-container">
-      <input
-        type="text"
-        placeholder="Title"
-        className="input-title"
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <textarea
-        placeholder="Description"
-        className="input-description"
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <button onClick={saveNote} className="add-new-button">
-        Add New Note
-      </button>
+      <>
+        <input
+          type="text"
+          placeholder="Title"
+          className="input-title"
+          onChange={(e) => handleTyping(e, "title")}
+        />
+        <textarea
+          placeholder="Description"
+          className="input-description"
+          onChange={(e) => handleTyping(e, "description")}
+        />
+        <button onClick={handleSubmit} className="add-new-button">
+          Add New Note
+        </button>
+      </>
     </div>
   );
 }
