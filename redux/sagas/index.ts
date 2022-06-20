@@ -2,6 +2,8 @@ import { all, put, select, takeEvery, takeLatest } from "redux-saga/effects";
 import {
   createNoteItemActionRequest,
   getNoteListActionSuccess,
+  removeNoteItemActionRequest,
+  removeNoteItemActionSuccess
 } from "../actions/notes";
 import ActionTypeEnum from "../types";
 // import * as actions from "../actions/notes";
@@ -45,6 +47,13 @@ import ActionTypeEnum from "../types";
 //   yield takeEvery(ActionTypeEnum.NOTE_GET_SUCCESS, loadNotes)
 // }
 
+
+
+
+
+
+
+
 function* createNoteSagaAction({
   payload,
 }: ReturnType<typeof createNoteItemActionRequest>) {
@@ -55,8 +64,17 @@ function* createNoteSagaAction({
   }
 }
 
+function* removeNoteSagaAction({payload}: ReturnType<typeof removeNoteItemActionRequest>){
+  try {
+    yield put(removeNoteItemActionSuccess(payload))
+  } catch (error) {
+    console.log("removeNoteItemAction", error);
+  }
+}
+
 export function* rootSaga() {
   yield all([
     takeEvery(ActionTypeEnum.NOTE_CREATE_REQUEST, createNoteSagaAction),
+    takeEvery(ActionTypeEnum.NOTE_REMOVE_REQUEST, removeNoteSagaAction)
   ]);
 }
