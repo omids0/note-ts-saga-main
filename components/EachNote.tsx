@@ -10,14 +10,12 @@ import Link from "next/link";
 import React, { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
-  INoteDataReqActionType,
   INoteDataResActionType,
 } from "../types/DTO/note";
 import {
   removeNoteItemActionRequest,
   updateNoteItemActionRequest,
 } from "./../redux/actions/notes/index";
-import { useRouter } from "next/router";
 
 interface INoteItemProps {
   id: INoteDataResActionType["data"][0]["id"];
@@ -28,7 +26,6 @@ interface INoteItemProps {
 
 const EachNote: FC<INoteItemProps> = (props) => {
   const { id, description, title, ...rest } = props;
-  const router = useRouter();
   const dispatch = useDispatch();
 
   const handleRemoveItem = () => {

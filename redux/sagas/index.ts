@@ -34,7 +34,7 @@ function* updateNoteSagaAction({
   so,
 }: ReturnType<typeof updateNoteItemActionRequest>) {
   try {
-    yield delay(5000)
+    yield delay(3000)
     yield put(updateNoteActionSuccess(payload));
     so?.(false)
     // meta?.push('/')
