@@ -17,30 +17,33 @@ const reducer: Reducer<INoteDataResActionType, TAction> = (
     case ActionTypeEnum.NOTE_GET_SUCCESS: {
       return {
         ...state,
-        data: [...state.data,action.payload],
+        data: [...state.data, action.payload],
       };
     }
 
     case ActionTypeEnum.NOTE_REMOVE_SUCCESS: {
-      const data = state.data.filter(item => item.id !== action.payload.id)
+      const data = state.data.filter((item) => item.id !== action.payload.id);
       return {
         ...state,
-        data
-      }
+        data,
+      };
     }
 
-    // case ActionTypeEnum.NOTE_CREATE_REQUEST: {
-    //   console.log("NOTE_CREATE_REQUEST", action.payload);
-
-    //   // return {
-    //   //   ...state,
-    //   // };
-    // }
+    case ActionTypeEnum.NOTE_UPDATE_SUCCESS: {
+      const data = state.data.map((item) =>
+        item.id === action.payload.id ? action.payload : item
+      );
+      return {
+        ...state,
+        data,
+      };
+    }
     default:
       return state;
   }
 };
 
+//note list az koja umade?!
 const getDataList = (state: RootState) =>
   (state.noteList as INoteDataResActionType).data;
 

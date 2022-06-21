@@ -35,28 +35,25 @@ export const removeNoteItemActionSuccess = (
   payload,
 });
 
-// export const notesAddedAction = (payload: INoteDataReqActionType) => ({
-//   type: ActionTypeEnum.NOTE_ADDED,
-//   payload,
-// });
+//UPDATE NOTE REQUEST
+export const updateNoteItemActionRequest = (
+  payload: INoteDataReqActionType["req"]
+) => ({
+  type: ActionTypeEnum.NOTE_UPDATE_REQUEST,
+  payload,
+});
 
-// for apis
-// // for create
-// export const noteCreateActionRequest = (payload: any)=> ({ type:"action.note.request" , payload})
-
-// // for update
-// export const noteUpdateActionRequest = (payload: any)=> ({ type:"action.note.request" , payload})
-
-// // for delete
-// export const noteRemoveActionRequest = (payload: any)=> ({ type:"action.note.request" , payload})
-
-// // for get
-// export const noteListActionRequest = (payload: any)=> ({ type:"action.note.request" , payload})
-// export const noteListActionSuccess = (payload: any)=> ({ type:"action.note.request" , payload})
+export const updateNoteActionSuccess = (
+  payload: INoteDataReqActionType["req"]
+) => ({
+  type: ActionTypeEnum.NOTE_UPDATE_SUCCESS,
+  payload,
+});
 
 type TAction =
   | ReturnType<typeof getNoteListActionSuccess>
   | ReturnType<typeof createNoteItemActionRequest>
-  | ReturnType<typeof removeNoteItemActionRequest>;
+  | ReturnType<typeof removeNoteItemActionRequest>
+  | ReturnType<typeof updateNoteItemActionRequest>;
 
 export default TAction;

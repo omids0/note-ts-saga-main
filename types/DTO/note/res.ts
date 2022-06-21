@@ -1,7 +1,5 @@
-import { TNoteDataReq } from "./req";
-
 interface INoteDataResActionType {
-  data:  {
+  data: {
     id: string;
     title: string;
     description: string;
