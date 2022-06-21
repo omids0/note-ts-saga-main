@@ -1,8 +1,4 @@
-import { NextRouter } from "next/router";
-import {
-  INoteDataReqActionType,
-  INoteDataResActionType,
-} from "../../../types/DTO/note";
+import { INoteDataReqActionType } from "../../../types/DTO/note";
 import ActionTypeEnum from "../../types";
 
 // GET LIST
@@ -43,7 +39,7 @@ export const updateNoteItemActionRequest = (
 ) => ({
   type: ActionTypeEnum.NOTE_UPDATE_REQUEST,
   payload,
-  meta
+  meta,
 });
 
 export const updateNoteActionSuccess = (

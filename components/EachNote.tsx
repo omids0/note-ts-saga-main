@@ -40,7 +40,7 @@ const EachNote: FC<INoteItemProps> = (props) => {
       <Link href={`/edit/${id}`} passHref>
         <div className="each-note-header">
           <button onClick={handleRemoveItem}>X</button>
-          <h3>{title}</h3>
+          <h3 className="each-note-title">{title}</h3>
         </div>
       </Link>
       <div className="each-note-description">{description}</div>

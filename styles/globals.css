@@ -124,8 +124,10 @@ body {
   border-bottom: 2px solid lightblue;
   font-size: 1.8rem;
   font-weight: bold;
+  min-width: 30rem;
 }
 .edit-description-input{
+  min-width: 30rem;
   margin-bottom: 3rem;
   padding: 0.5rem 1rem;
   border: none;
@@ -142,4 +144,10 @@ body {
 .edit-button-handler:hover{
   cursor: pointer;
   box-shadow: 1px 1px 1px #999999;
+}
+.each-note-title{
+  cursor: pointer;
+}
+.each-note-title:hover{
+  text-shadow: 1px 1px 8px #999999;
 }
