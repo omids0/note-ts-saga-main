@@ -4,11 +4,12 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { updateNoteItemActionRequest } from "../../redux/actions/notes";
 import { getDataList } from "../../redux/reducers/notes";
+import { useRouter } from "next/router";
 
 export default function editNotePage({ id }: any) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
+  const router = useRouter();
   const dispatch = useDispatch();
 
   const notesList = useSelector(getDataList);
@@ -16,7 +17,6 @@ export default function editNotePage({ id }: any) {
   const note = notesList.find((item) => item.id === id);
 
   useEffect(() => {
-    console.log(note);
     if (note) {
       setTitle(note.title);
       setDescription(note.description);
@@ -24,16 +24,15 @@ export default function editNotePage({ id }: any) {
   }, []);
 
   function handlerUpdate() {
-    console.log({ id, title, description });
 
-    dispatch(updateNoteItemActionRequest({ id, title, description }));
+    dispatch(updateNoteItemActionRequest({ id, title, description }, router));
     // window.location.href = "/";
   }
 
   return (
     <div className="edit-note-container">
       {!note ? (
-        <h1>hamchin noti nist</h1>
+        <h1>Note Not Found..!</h1>
       ) : (
         <div className="edit-form-container">
           <input

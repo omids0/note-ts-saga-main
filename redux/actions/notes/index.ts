@@ -1,3 +1,4 @@
+import { NextRouter } from "next/router";
 import {
   INoteDataReqActionType,
   INoteDataResActionType,
@@ -37,10 +38,12 @@ export const removeNoteItemActionSuccess = (
 
 //UPDATE NOTE REQUEST
 export const updateNoteItemActionRequest = (
-  payload: INoteDataReqActionType["req"]
+  payload: INoteDataReqActionType["req"],
+  meta?: any
 ) => ({
   type: ActionTypeEnum.NOTE_UPDATE_REQUEST,
   payload,
+  meta
 });
 
 export const updateNoteActionSuccess = (

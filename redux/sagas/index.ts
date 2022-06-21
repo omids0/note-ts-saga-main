@@ -31,9 +31,11 @@ function* removeNoteSagaAction({
 
 function* updateNoteSagaAction({
   payload,
+  meta,
 }: ReturnType<typeof updateNoteItemActionRequest>) {
   try {
     yield put(updateNoteActionSuccess(payload));
+    meta?.push("/");
   } catch (error: any) {
     console.log("updateNoteSagaAction", error);
   }

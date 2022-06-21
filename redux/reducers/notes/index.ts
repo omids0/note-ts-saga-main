@@ -30,8 +30,14 @@ const reducer: Reducer<INoteDataResActionType, TAction> = (
     }
 
     case ActionTypeEnum.NOTE_UPDATE_SUCCESS: {
-      const data = state.data.map((item) =>
-        item.id === action.payload.id ? action.payload : item
+      const data = state.data.map(
+        (item) => {
+          if (item.id === action.payload.id) {
+            return action.payload;
+          }
+          return item;
+        }
+        // item.id === action.payload.id ? action.payload : item
       );
       return {
         ...state,
@@ -43,7 +49,6 @@ const reducer: Reducer<INoteDataResActionType, TAction> = (
   }
 };
 
-//note list az koja umade?!
 const getDataList = (state: RootState) =>
   (state.noteList as INoteDataResActionType).data;
 
