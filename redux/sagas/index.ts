@@ -1,4 +1,4 @@
-import { all, put, takeEvery } from "redux-saga/effects";
+import { all, delay, put, takeEvery } from "redux-saga/effects";
 import {
   createNoteItemActionRequest,
   getNoteListActionSuccess,
@@ -31,11 +31,13 @@ function* removeNoteSagaAction({
 
 function* updateNoteSagaAction({
   payload,
-  meta,
+  so,
 }: ReturnType<typeof updateNoteItemActionRequest>) {
   try {
+    yield delay(5000)
     yield put(updateNoteActionSuccess(payload));
-    meta?.push("/");
+    so?.(false)
+    // meta?.push('/')
   } catch (error: any) {
     console.log("updateNoteSagaAction", error);
   }

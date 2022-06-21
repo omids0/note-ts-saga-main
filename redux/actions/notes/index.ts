@@ -35,11 +35,12 @@ export const removeNoteItemActionSuccess = (
 //UPDATE NOTE REQUEST
 export const updateNoteItemActionRequest = (
   payload: INoteDataReqActionType["req"],
-  meta?: any
+  so: React.Dispatch<React.SetStateAction<boolean>>
 ) => ({
   type: ActionTypeEnum.NOTE_UPDATE_REQUEST,
   payload,
-  meta,
+  so,
+  // meta
 });
 
 export const updateNoteActionSuccess = (

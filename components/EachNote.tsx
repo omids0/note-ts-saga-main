@@ -9,24 +9,15 @@ import {
 import Link from "next/link";
 import React, { FC, useState } from "react";
 import { useDispatch } from "react-redux";
-import { INoteDataResActionType } from "../types/DTO/note";
-import { removeNoteItemActionRequest } from "./../redux/actions/notes/index";
-
-// export default function EachNote({ note }) {
-//   const dispatch = useDispatch()
-//   const removeHandler = (id: string) => {
-//     dispatch(removeNoteItemActionRequest(id))
-//   }
-//   return (
-//     <div className="each-note-container" key={note.id}>
-//       <div className="each-note-header">
-//         <button onClick={(note.id) => removeHandler(note.id)}>X</button>
-//         <h3>{note.title}</h3>
-//       </div>
-//       <div className='each-note-description'>{note.description}</div>
-//     </div>
-//   );
-// }
+import {
+  INoteDataReqActionType,
+  INoteDataResActionType,
+} from "../types/DTO/note";
+import {
+  removeNoteItemActionRequest,
+  updateNoteItemActionRequest,
+} from "./../redux/actions/notes/index";
+import { useRouter } from "next/router";
 
 interface INoteItemProps {
   id: INoteDataResActionType["data"][0]["id"];
@@ -37,17 +28,41 @@ interface INoteItemProps {
 
 const EachNote: FC<INoteItemProps> = (props) => {
   const { id, description, title, ...rest } = props;
+  const router = useRouter();
   const dispatch = useDispatch();
 
   const handleRemoveItem = () => {
     dispatch(removeNoteItemActionRequest(props));
   };
 
+  const [{ _id, _title, _description }, setState] = React.useState<{
+    _id: string;
+    _title: string;
+    _description: string;
+  }>({
+    _id: id,
+    _title: title,
+    _description: description,
+  });
+
   const [open, setOpen] = useState(false);
 
   function handleClose() {
     setOpen(!open);
   }
+
+  const handlerChange = (e: any) => {
+    setState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handlerUpdate = () => {
+    dispatch(
+      updateNoteItemActionRequest(
+        { id, title: _title, description: _description },
+        setOpen
+      )
+    );
+  };
 
   const style = {
     position: "absolute" as "absolute",
@@ -64,7 +79,7 @@ const EachNote: FC<INoteItemProps> = (props) => {
   const slidBox = {
     display: "flex",
     flexDirection: "column",
-  }
+  };
 
   return (
     <div className="each-note-container" key={rest.key}>
@@ -92,17 +107,23 @@ const EachNote: FC<INoteItemProps> = (props) => {
                 id="outlined-basic"
                 label="Title"
                 variant="outlined"
-                value={title}
+                value={_title}
+                name="_title"
+                onChange={(e) => handlerChange(e)}
                 sx={{ margin: "10px 0", fontSize: "30px" }}
               />
               <TextField
                 id="outlined-basic"
                 label="Description"
                 variant="outlined"
-                value={description}
+                value={_description}
+                name="_description"
+                onChange={(e) => handlerChange(e)}
                 sx={{ marginBottom: "20px" }}
               />
-              <Button variant="contained">Update</Button>
+              <Button variant="contained" onClick={handlerUpdate}>
+                Update
+              </Button>
             </Box>
           </Slide>
         </Box>

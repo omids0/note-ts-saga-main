@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { GetServerSideProps } from "next";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
