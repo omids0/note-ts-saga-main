@@ -98,3 +98,48 @@ body {
 .each-note-description{
   padding: 1rem
 }
+
+.edit-note-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+.edit-form-container{
+  min-width: 30rem;
+  min-height: 30rem;
+  background-color: #eeeeee;
+  padding: 2rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.edit-title-input{
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-bottom: 2px solid lightblue;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.edit-description-input{
+  margin-bottom: 3rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-bottom: 2px solid lightblue;
+  font-size: 2rem;
+}
+.edit-button-handler{
+  padding: .8rem 1.6rem;
+  background-color: blue;
+  border-radius: 7px;
+  color: #ffffff;
+  border: none;
+}
+.edit-button-handler:hover{
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #999999;
+}

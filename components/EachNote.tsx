@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
 import { INoteDataResActionType } from "../types/DTO/note";
@@ -27,19 +28,21 @@ interface INoteItemProps {
 }
 
 const EachNote: FC<INoteItemProps> = (props) => {
-  const { id, description, title , ...rest } = props;
-    const dispatch = useDispatch()
+  const { id, description, title, ...rest } = props;
+  const dispatch = useDispatch();
 
-    const handleRemoveItem = () => {
-    dispatch(removeNoteItemActionRequest(props))
-  }
+  const handleRemoveItem = () => {
+    dispatch(removeNoteItemActionRequest(props));
+  };
 
   return (
     <div className="each-note-container" key={rest.key}>
-      <div className="each-note-header">
-        <button onClick={handleRemoveItem}>X</button>
-        <h3>{title}</h3>
-      </div>
+      <Link href={`/edit/${id}`} passHref>
+        <div className="each-note-header">
+          <button onClick={handleRemoveItem}>X</button>
+          <h3>{title}</h3>
+        </div>
+      </Link>
       <div className="each-note-description">{description}</div>
     </div>
   );
