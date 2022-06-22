@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { createNoteItemActionRequest } from "../redux/actions/notes";
 import { INoteDataReqActionType } from "../types/DTO/note";
@@ -22,6 +22,11 @@ export default function NoteForm() {
 
   const handleSubmit = () => {
     dispatch(createNoteItemActionRequest(state));
+    setState((perv) => ({
+      id: String(new Date().getUTCMilliseconds() + Math.random()),
+      title: "",
+      description: "",
+    }))
   };
 
   const handleTyping = (
@@ -45,11 +50,13 @@ export default function NoteForm() {
           placeholder="Title"
           className="input-title"
           onChange={(e) => handleTyping(e, "title")}
+          value={state.title}
         />
         <textarea
           placeholder="Description"
           className="input-description"
           onChange={(e) => handleTyping(e, "description")}
+          value={state.description}
         />
         <button onClick={handleSubmit} className="add-new-button">
           Add New Note
